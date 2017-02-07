@@ -8,7 +8,7 @@
 ## STEP 0: load required packages
 
 # Init packages and variables
-library(reshape2)
+library(dplyr)
 X_train <- X_test <- y_train <- y_test <- NULL
 subject_train <- subject_test <- NULL
 
@@ -20,5 +20,9 @@ X_train <- read.table("X_train.txt")
 X_test <- read.table("X_test.txt")
 y_train <- read.table("y_train.txt")
 y_test <- read.table("y_test.txt")
+
+# unify name, and clean subject files headers
+names(subject_train) <- "subjectID"
+names(subject_test) <- "subjectID"
 
 
