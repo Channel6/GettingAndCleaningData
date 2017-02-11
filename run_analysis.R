@@ -8,7 +8,7 @@
 ## STEP 0: load required packages
 
 # Init packages and variables
-library(dplyr, reshape2)
+library(dplyr, tidyr, data.table)
 X_train <- X_test <- y_train <- y_test <- NULL
 subject_train <- subject_test <- NULL
 
@@ -29,6 +29,9 @@ names(subject_test) <- "subjectID"
 featurenames <- read.table("features.txt")
 names(X_train) <- featurenames$V2
 names(X_test) <- featurenames$V2
+
+# Get activity levels
+activity_labels <- read.table("activity_labels.txt")
 
 # Combine files into one dataset
 train <- cbind(subject_train, Y_train, X_train)
