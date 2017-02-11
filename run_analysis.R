@@ -28,7 +28,7 @@ names(subject_test) <- "subjectID"
 # Add column names for measurement files
 featurenames <- read.table("features.txt")
 names(X_train) <- featurenames$V2
-names(X_text) <- featurenames$V2
+names(X_test) <- featurenames$V2
 
 # Combine files into one dataset
 train <- cbind(subject_train, Y_train, X_train)
@@ -39,15 +39,7 @@ combined <- rbind(train, test)
 ## 	of each measurement
 
 # Determine which columns contain mean() or std()
-statcolumns <- grep1(
-		"mean\\(\\)",
-		names(combined)
-		)
-		|
-	grepl(
-		"std\\(\\)",
-		names(combined)
-)
+statcolumns <- grepl("mean\\(\\)", names(combined)) || grepl("std\\(\\)", names(combined))
 
 # Keep the subjectID and activity columns
 statcolumns[1:2] <- TRUE
