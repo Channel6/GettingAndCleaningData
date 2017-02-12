@@ -8,7 +8,7 @@
 ## STEP 0: load required packages
 
 # Init packages and variables
-library(dplyr, tidyr, plyr, data.table)
+library("dplyr", "tidyr", "plyr")
 X_train <- X_test <- y_train <- y_test <- NULL
 subject_train <- subject_test <- NULL
 
